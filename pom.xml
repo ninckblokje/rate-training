@@ -10,7 +10,7 @@
     </parent>
     <groupId>ninckblokje.bnb</groupId>
     <artifactId>rate-training</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.0-ES</version>
     <name>rate-training</name>
 
     <properties>
@@ -25,7 +25,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
