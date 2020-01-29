@@ -12,7 +12,7 @@ public class Rating {
     @NotNull
     private String byWho;
     @NotNull
-    @Min(8)
+    @Min(1)
     @Max(10)
     private Integer rating;
 }

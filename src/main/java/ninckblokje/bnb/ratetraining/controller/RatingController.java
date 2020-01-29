@@ -5,6 +5,7 @@ import ninckblokje.bnb.ratetraining.entity.Training;
 import ninckblokje.bnb.ratetraining.repository.TrainingRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/api/rating")
+@Transactional
 public class RatingController {
 
     private TrainingRepository trainingRepository;
@@ -36,6 +38,10 @@ public class RatingController {
         training.getRatings().add(rating);
 
         trainingRepository.save(training);
+
+        if (rating.getRating() < 6) {
+            throw new IllegalArgumentException(String.format("%d is really too low!", rating.getRating()));
+        }
 
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
